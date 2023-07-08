@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSV Upload</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<style>
+    
+</style>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <form action="/csv-upload" method="post" enctype='multipart/form-data'> 
+                    <div class="col-md-5">
+                        <label for="csv">Upload CSV</label>
+                        <input type="file" name="csvFile" id="csv" accept=".csv" class="form-control">
+                    </div>
+                    <button class="btn btn-primary" style="margin-top: 24px;">Submit</button>
+                </form>
+            </div>
+
+            <div class="col-md-6">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th class="text-center" colspan="3">Uploaded File</th>
+                        </tr>
+                        <tr>
+                            <th class="text-center">#</th>
+                            <th class="text-center">File Name</th>
+                            <th class="text-center">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% if(file.length > 0){ let i=1; for(data of file){ %>
+                            <tr>
+                                <td><%= i %></td>
+                                <td><%= data %></td>
+                                <td><a href="/view-data?filename=<%= data %>" target="_blank">Open</a></td>
+                            </tr>
+                        <% i++;} } else{%>
+                            <tr>
+                                <td colspan="3" class="text-center">No File Found!</td>
+                            </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
