@@ -1,0 +1,51 @@
+<% 
+
+    let row = result.length;
+    let col = result[0].length;
+
+%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+    <script type="module" src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.js"></script>
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+            <h3><u>Filename : <%= filename %></u></h3>
+        
+        <table id="csv-data" class="display">
+            <thead>
+                <tr>
+                <%for(let j=0; j<col; j++){%>
+                    <th><%= result[0][j] %></th>
+                <% } %>    
+                </tr> 
+            </thead>
+            <tbody>
+            <%for(let i=1; i<row; i++){%>
+                   <tr>
+                    <%for(let k=0; k<col; k++){%>
+                        <td><%= result[i][k] %></td>
+                    <% } %>    
+                   </tr> 
+             <% } %>   
+            </tbody>
+        </table>
+        </div>
+    </div>
+    
+</body>
+<script type="text/javascript"  src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script>
+    $(document).ready( function () {
+        $('#csv-data').DataTable({    
+    });
+} );
+</script>
+</html>
