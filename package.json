@@ -3,6 +3,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon index.js"
   },
+  "author": "Rajat Rai (irairajat@gmail.com)",
+  "license": "ISC",
   "dependencies": {
     "csv-parse": "^5.4.0",
     "csv-parser": "^3.0.0",
